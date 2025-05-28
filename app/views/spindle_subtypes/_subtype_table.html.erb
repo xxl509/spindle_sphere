@@ -1,0 +1,53 @@
+<div class="table-bar">
+  <span style="font-size:16px; padding-left:5px"> <span class="fa fa-table"></span>  Results: 
+    <span class="subtype-res-num">
+      <span class="num_text" id="subtype_num_text"><%= @subtypes_num %></span> subtype(s) 
+      <span class="divider-vertical"></span> 
+      <span id="loading-sign-sub" class="fa fa-spinner fa-spin fa-fw loading-icon" style="display: none"></span>
+    </span>
+  </span>
+  <hr>
+  <div class="subtype-result" style="margin-top: 10px">
+    <table id="all-table"  data-show-header="true" data-pagination="true" data-id-field="name" data-page-list="[5, 10, 25, 50, 100, ALL]" data-page-size="10">
+      <thead>
+      <tr>
+          <th data-field="cluster_id" data-sortable="true">#</th>
+          <th data-field="cluster_no">Cluster Name</th>
+          <th data-field="count" data-sortable="true">Count</th>
+          <th data-field="dominant_freq_avg" data-sortable="true">Frequency (Avg/Hz)</th>
+          <th data-field="dominant_freq_std" data-sortable="true">Frequency (Std/Hz)</th>
+          <th data-field="channel" data-sortable="true">Channel</th>
+          <th data-field="duration_avg" data-sortable="true">Duration (Avg/s)</th>
+          <th data-field="duration_std" data-sortable="true">Duration (Std/s)</th>
+          <th data-field="amplitude_avg" data-sortable="true">Amplitude (Avg/uv)</th>
+          <th data-field="amplitude_std" data-sortable="true">Amplitude (Std/uv)</th>
+          <th data-field="ton_avg" data-sortable="true">TON (Avg)</th>
+          <th data-field="ton_std" data-sortable="true">TON (Std)</th>
+          <th data-field="center" >Center</th>
+          <th data-field="show" data-formatter="showSubFormatter">Show</th>
+          <!-- <th data-field="download" data-formatter="downloadFormatter" >Download</th> -->
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  var data = <%= @subtypes_json.html_safe %>;
+
+  function showSubFormatter(value) {
+    return "<span class='fa fa-file-text-o cluster-show' style='cursor:pointer'></span>";
+  }
+
+  function downloadFormatter(value) {
+    return "<input class='cbox' type='checkbox' name='cbox'>"
+  }
+
+  $(function () {
+    $('#all-table').bootstrapTable({
+      data: data
+    });
+  });
+</script>

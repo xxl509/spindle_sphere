@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= "Spindle Sub Types" %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_tag "var script_name='#{request.script_name + '/'}';" %>
+  </head>
+  <body>
+    <%= render partial: 'layouts/header' %>
+	  <div class="container" style='width: 99%;'>
+      <div id='message'><%= render partial: "layouts/flash_messages", flash: flash %> </div> 
+	  	<%= yield %>
+	  </div>
+  </body>
+  <%= render partial: 'layouts/footer' %>
+</html>

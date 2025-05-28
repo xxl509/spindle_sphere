@@ -1,0 +1,44 @@
+<div class="table-bar">
+  <span style="font-size:16px; padding-left:5px"> <span class="fa fa-table"></span>  Results: 
+    <span class="spindle-res-num">
+      <span class="num_text" id="spindle_num_text"><%= @spindles_num %></span> spindle(s) 
+      <span class="divider-vertical"></span> 
+      <span id="loading-sign-sub" class="fa fa-spinner fa-spin fa-fw loading-icon" style="display: none"></span>
+    </span>
+  </span>
+  <hr>
+  <div class="spindle-result" style="margin-top: 10px">
+    <table id="all-table"  data-show-header="true" data-pagination="true" data-id-field="name" data-page-list="[5, 10, 25, 50, 100, ALL]" data-page-size="10">
+      <thead>
+      <tr>
+          <th data-field="spindle_id" data-sortable="true">#</th>
+          <th data-field="patient_id" data-sortable="true">Patient ID</th>
+          <th data-field="channel_num" >Channels</th>
+          <th data-field="fs" >Fs (Hz)</th>
+          <th data-field="show" data-formatter="showSubFormatter">Show</th>
+          <!-- <th data-field="download" data-formatter="downloadFormatter" >Download</th> -->
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  var data = <%= @spindles_json.html_safe %>;
+
+  function showSubFormatter(value) {
+    return "<span class='fa fa-line-chart signal-show' style='cursor:pointer'></span> <span class='fa fa-user-md signal-show-expert' style='cursor:pointer'></span>";
+  }
+
+  function downloadFormatter(value) {
+    return "<input class='cbox' type='checkbox' name='cbox'>"
+  }
+
+  $(function () {
+    $('#all-table').bootstrapTable({
+      data: data
+    });
+  });
+</script>

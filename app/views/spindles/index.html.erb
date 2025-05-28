@@ -1,0 +1,20 @@
+<div class="spindle-table" style="margin-top: 60px">
+  <%= render 'spindles/spindles_table'%>
+</div>
+
+<script>
+  $(document).on("click",".signal-show",function(){
+    var patient_id = $(this).parent().parent().children().eq(1).text().trim();
+    var spindle_id = $(this).parent().parent().children().eq(0).text().trim();
+    var path = <%= spindles_show_path.to_json.html_safe %>
+    window.open(path+"?spindle_id="+spindle_id);
+  });
+
+  $(document).on("click",".signal-show-expert",function(){
+    var patient_id = $(this).parent().parent().children().eq(1).text().trim();
+    var spindle_id = $(this).parent().parent().children().eq(0).text().trim();
+    var path = <%= spindles_expertshow_path.to_json.html_safe %>
+    window.open(path+"?spindle_id="+spindle_id);
+  });
+</script>
+

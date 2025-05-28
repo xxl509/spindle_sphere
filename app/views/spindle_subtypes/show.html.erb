@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cluster:</strong>
+  <%= @spindle_subtype.cluster_id %>
+</p>
+
+<p>
+  <strong>Cluster no:</strong>
+  <%= @spindle_subtype.cluster_no %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @spindle_subtype.count %>
+</p>
+
+<%= link_to 'Edit', edit_spindle_subtype_path(@spindle_subtype) %> |
+<%= link_to 'Back', spindle_subtypes_path %>

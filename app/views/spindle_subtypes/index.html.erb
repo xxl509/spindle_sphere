@@ -1,0 +1,11 @@
+<div class="spindle-table" style="margin-top: 60px">
+  <%= render 'spindle_subtypes/subtype_table'%>
+</div>
+
+<script>
+	$(document).on("click",".cluster-show",function(){
+    var spindle_id = $(this).parent().parent().children().eq(12).text().trim();
+    var path = <%= spindles_show_path.to_json.html_safe %>
+    window.open(path+"?spindle_id="+spindle_id);
+  });
+</script>
